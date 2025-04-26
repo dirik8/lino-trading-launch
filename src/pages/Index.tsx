@@ -1,4 +1,3 @@
-
 import React from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -14,7 +13,6 @@ import Footer from "../components/Footer";
 import ChatButton from "../components/ChatButton";
 import NotificationPopup from "../components/NotificationPopup";
 
-// Add schema.org structured data for SEO
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -25,7 +23,8 @@ const structuredData = {
   "sameAs": [
     "https://twitter.com/ernestlino",
     "https://linkedin.com/in/ernestlino",
-    "https://t.me/ernestlino"
+    "https://t.me/ernestlino",
+    "https://adviserinfo.sec.gov/individual/summary/1196460"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -61,7 +60,6 @@ const Index = () => {
       <ChatButton />
       <NotificationPopup />
       
-      {/* Add structured data for SEO */}
       <script 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

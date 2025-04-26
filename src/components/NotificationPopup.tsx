@@ -2,8 +2,23 @@
 import React, { useState, useEffect } from 'react';
 import { XCircle } from 'lucide-react';
 
-const firstNames = ["James", "Sarah", "Michael", "Emma", "John", "Lisa", "David", "Sophia", "Robert", "Olivia"];
-const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Wilson"];
+// Expanded name lists for more variety
+const firstNames = [
+  "James", "Sarah", "Michael", "Emma", "John", "Lisa", "David", "Sophia",
+  "Robert", "Olivia", "William", "Isabella", "Joseph", "Mia", "Thomas",
+  "Charlotte", "Daniel", "Amelia", "Matthew", "Harper", "Andrew", "Evelyn",
+  "Richard", "Abigail", "Charles", "Emily", "Kevin", "Elizabeth", "Brian",
+  "Sofia", "Steven", "Victoria"
+];
+
+const lastNames = [
+  "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller",
+  "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez",
+  "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin",
+  "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark",
+  "Ramirez", "Lewis", "Young"
+];
+
 const amounts = ["$150,000", "$230,000", "$500,000", "$780,000", "$1.2M", "$2.5M", "$3.7M", "$4.8M"];
 
 const NotificationPopup = () => {
@@ -14,12 +29,12 @@ const NotificationPopup = () => {
   });
 
   const generateNotification = () => {
-    const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-    const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const randomFirst = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLast = lastNames[Math.floor(Math.random() * lastNames.length)];
     const amount = amounts[Math.floor(Math.random() * amounts.length)];
     
     setNotification({
-      name: `${firstName} ${lastName}`,
+      name: `${randomFirst} ${randomLast}`,
       amount: amount
     });
   };
