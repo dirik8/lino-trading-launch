@@ -2,29 +2,32 @@
 import React, { useState, useEffect } from 'react';
 import { XCircle } from 'lucide-react';
 
-// Expanded name lists for more variety
+// Expanded and more diverse name lists
 const firstNames = [
-  "James", "Sarah", "Michael", "Emma", "John", "Lisa", "David", "Sophia",
-  "Robert", "Olivia", "William", "Isabella", "Joseph", "Mia", "Thomas",
-  "Charlotte", "Daniel", "Amelia", "Matthew", "Harper", "Andrew", "Evelyn",
-  "Richard", "Abigail", "Charles", "Emily", "Kevin", "Elizabeth", "Brian",
-  "Sofia", "Steven", "Victoria", "Christopher", "Grace", "Timothy", "Zoe",
-  "Jason", "Natalie", "Paul", "Hannah", "Mark", "Lily", "George", "Chloe",
-  "Kenneth", "Ella", "Ronald", "Scarlett", "Edward", "Aria", "Justin", "Madison"
+  "James", "Emma", "William", "Olivia", "Benjamin", "Ava", "Lucas", "Isabella",
+  "Henry", "Sophia", "Theodore", "Mia", "Alexander", "Charlotte", "Sebastian",
+  "Amelia", "Jackson", "Harper", "Daniel", "Evelyn", "Matthew", "Abigail",
+  "David", "Elizabeth", "Joseph", "Sofia", "Samuel", "Victoria", "John",
+  "Madison", "Owen", "Scarlett", "Gabriel", "Aria", "Anthony", "Grace",
+  "Christopher", "Chloe", "Andrew", "Zoe", "Joshua", "Natalie", "Nicholas",
+  "Hannah", "Ryan", "Lily", "Nathan", "Layla", "Christian", "Riley"
 ];
 
 const lastNames = [
-  "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller",
-  "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez",
-  "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin",
-  "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark",
-  "Ramirez", "Lewis", "Young", "Walker", "Allen", "King", "Wright", "Scott",
-  "Torres", "Nguyen", "Hill", "Flores", "Green", "Adams", "Nelson", "Baker",
-  "Hall", "Rivera", "Campbell", "Mitchell", "Carter", "Roberts", "Turner",
-  "Phillips", "Evans", "Parker", "Edwards", "Collins"
+  "Anderson", "Brown", "Chen", "Davis", "Evans", "Foster", "Garcia", "Harris",
+  "Ibrahim", "Johnson", "Kim", "Lee", "Martinez", "Nguyen", "O'Connor", "Patel",
+  "Quinn", "Rodriguez", "Sullivan", "Thompson", "Ueda", "Vargas", "Wilson",
+  "Xu", "Yang", "Zhang", "Williams", "Taylor", "Moore", "Jackson", "White",
+  "Lopez", "Clark", "Lewis", "Walker", "Hall", "Young", "King", "Wright",
+  "Lopez", "Hill", "Scott", "Green", "Adams", "Baker", "Morris", "Rivera",
+  "Mitchell", "Turner", "Phillips", "Parker", "Collins", "Edwards", "Stewart"
 ];
 
-const amounts = ["$150,000", "$230,000", "$500,000", "$780,000", "$1.2M", "$2.5M", "$3.7M", "$4.8M"];
+const amounts = [
+  "$127,500", "$245,000", "$567,800", "$892,300", "$1.1M", "$2.3M", "$3.5M",
+  "$4.2M", "$156,700", "$298,400", "$437,900", "$725,600", "$1.5M", "$2.8M",
+  "$3.9M", "$5.1M"
+];
 
 // Track used names to avoid repetition
 let usedNames = new Set();
