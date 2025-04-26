@@ -10,13 +10,12 @@ const About = () => {
             Meet <span className="text-lino-yellow">Ernest Lino</span>
           </h2>
           
-          <div className="w-28 h-28 md:w-32 md:h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-lino-yellow bg-gradient-to-b from-gray-700 to-gray-900">
-            {/* Person icon as placeholder */}
-            <div className="h-full w-full flex items-center justify-center text-lino-yellow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-16 h-16">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            </div>
+          <div className="w-40 h-40 md:w-48 md:h-48 mx-auto mb-8 rounded-full overflow-hidden border-2 border-lino-yellow shadow-lg shadow-lino-yellow/20">
+            <img 
+              src="/lovable-uploads/d9b5eeb9-83ec-4517-a0d0-7b4dae0f715c.png"
+              alt="Ernest Lino - Financial Markets Expert"
+              className="w-full h-full object-cover"
+            />
           </div>
           
           <p className="text-xl text-gray-300 mb-6">
@@ -30,6 +29,20 @@ const About = () => {
             Ernest delivers real strategies and real guidance that produces real results.
             No fluff. No hype. Just proven trading methods.
           </p>
+          
+          <div className="mt-8">
+            <a 
+              href="https://adviserinfo.sec.gov/individual/summary/1196460" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-gray-800 hover:bg-gray-700 text-sm font-medium text-gray-200 hover:text-white transition-colors"
+            >
+              <svg className="w-4 h-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Verify Credentials
+            </a>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
