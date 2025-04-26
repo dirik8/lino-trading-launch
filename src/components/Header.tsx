@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +15,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleStartNow = () => {
+    window.open("https://wa.me/14438078332", "_blank");
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -24,8 +28,13 @@ const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between">
-        <a href="#" className="text-white font-heading font-bold text-xl md:text-2xl">
-          Ernest Lino
+        <a href="#" className="flex items-center group">
+          <div className="relative">
+            <div className="text-white font-heading font-bold text-xl md:text-2xl group-hover:text-lino-yellow transition-colors">
+              Ernest Lino
+            </div>
+            <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></div>
+          </div>
         </a>
 
         <nav className="hidden md:block">
@@ -33,58 +42,67 @@ const Header = () => {
             <li>
               <a
                 href="#"
-                className="text-white hover:text-lino-yellow transition-colors"
+                className="text-white hover:text-lino-yellow transition-colors relative group"
               >
                 Home
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
             <li>
               <a
                 href="#about"
-                className="text-white hover:text-lino-yellow transition-colors"
+                className="text-white hover:text-lino-yellow transition-colors relative group"
               >
                 About
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
             <li>
               <a
                 href="#how-it-works"
-                className="text-white hover:text-lino-yellow transition-colors"
+                className="text-white hover:text-lino-yellow transition-colors relative group"
               >
                 How It Works
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
             <li>
               <a
                 href="#performance"
-                className="text-white hover:text-lino-yellow transition-colors"
+                className="text-white hover:text-lino-yellow transition-colors relative group"
               >
                 Performance
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
             <li>
               <a
                 href="#faq"
-                className="text-white hover:text-lino-yellow transition-colors"
+                className="text-white hover:text-lino-yellow transition-colors relative group"
               >
                 FAQ
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
             <li>
               <a
                 href="#contact"
-                className="text-white hover:text-lino-yellow transition-colors"
+                className="text-white hover:text-lino-yellow transition-colors relative group"
               >
                 Contact
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lino-yellow group-hover:w-full transition-all duration-300"></span>
               </a>
             </li>
           </ul>
         </nav>
 
         <div className="hidden md:block">
-          <button className="bg-lino-yellow text-black py-2 px-5 rounded-md font-bold hover:bg-lino-yellow-light transition duration-300 flex items-center">
+          <button 
+            onClick={handleStartNow}
+            className="bg-lino-yellow text-black py-2 px-5 rounded-md font-bold hover:bg-lino-yellow-light transition duration-300 flex items-center group"
+          >
             START NOW
-            <ChevronRight className="ml-1 h-4 w-4" />
+            <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
@@ -93,35 +111,9 @@ const Header = () => {
           className="md:hidden text-white focus:outline-none"
         >
           {mobileMenuOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <X className="h-6 w-6" />
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+            <Menu className="h-6 w-6" />
           )}
         </button>
       </div>
@@ -191,7 +183,13 @@ const Header = () => {
               </a>
             </li>
             <li className="pt-4">
-              <button className="w-full bg-lino-yellow text-black py-3 px-5 rounded-md font-bold hover:bg-lino-yellow-light transition duration-300 flex items-center justify-center">
+              <button 
+                onClick={() => {
+                  handleStartNow();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full bg-lino-yellow text-black py-3 px-5 rounded-md font-bold hover:bg-lino-yellow-light transition duration-300 flex items-center justify-center"
+              >
                 START NOW
                 <ChevronRight className="ml-1 h-4 w-4" />
               </button>

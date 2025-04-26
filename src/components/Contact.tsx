@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { Mail, Clock, MessageSquare } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,35 +10,55 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(false);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: "", email: "", message: "" });
+    // Form submission would typically go through a server endpoint
+    // For now, we'll simulate a successful submission
+    try {
+      // Simulate server delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // Reset success message after 3 seconds
+      // Reset form
+      setFormData({ name: "", email: "", message: "" });
+      setSubmitSuccess(true);
+      
+      // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
-      }, 3000);
-    }, 1000);
+      }, 5000);
+    } catch (error) {
+      setSubmitError(true);
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitError(false);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="section bg-lino-black relative">
-      <div className="container">
+      <div className="absolute inset-0 z-0 opacity-5" style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}></div>
+      
+      <div className="container relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
+            <div className="animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Contact <span className="text-lino-yellow">Us</span>
               </h2>
@@ -46,11 +67,9 @@ const Contact = () => {
               </p>
               
               <div className="space-y-6 mb-8">
-                <div className="flex items-start">
+                <div className="flex items-start hover:transform hover:translate-x-2 transition-transform duration-300">
                   <div className="h-12 w-12 rounded-full bg-lino-yellow/10 flex items-center justify-center mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-lino-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                    <Mail className="h-6 w-6 text-lino-yellow" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1">Email</h3>
@@ -58,11 +77,9 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
+                <div className="flex items-start hover:transform hover:translate-x-2 transition-transform duration-300">
                   <div className="h-12 w-12 rounded-full bg-lino-yellow/10 flex items-center justify-center mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-lino-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <Clock className="h-6 w-6 text-lino-yellow" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1">Support Hours</h3>
@@ -70,11 +87,9 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-start">
+                <div className="flex items-start hover:transform hover:translate-x-2 transition-transform duration-300">
                   <div className="h-12 w-12 rounded-full bg-lino-yellow/10 flex items-center justify-center mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-lino-yellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                    </svg>
+                    <MessageSquare className="h-6 w-6 text-lino-yellow" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold mb-1">Response Time</h3>
@@ -85,8 +100,8 @@ const Contact = () => {
               
               <div className="pt-6 border-t border-gray-800">
                 <h3 className="text-xl font-semibold mb-4">Verification</h3>
-                <a href="#" className="flex items-center text-lino-yellow hover:underline">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="#" className="flex items-center text-lino-yellow hover:underline group">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                   View Ernest Lino's BrokerCheck Profile
@@ -94,7 +109,7 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="glossy-card p-6 md:p-8">
+            <div className="glossy-card p-6 md:p-8 backdrop-blur-sm animate-fade-in">
               <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
               
               <form onSubmit={handleSubmit}>
@@ -108,7 +123,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-lino-yellow"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-lino-yellow transition-all duration-300"
                     required
                   />
                 </div>
@@ -123,7 +138,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-lino-yellow"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-lino-yellow transition-all duration-300"
                     required
                   />
                 </div>
@@ -138,7 +153,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-lino-yellow resize-none"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-lino-yellow resize-none transition-all duration-300"
                     required
                   ></textarea>
                 </div>
@@ -164,8 +179,14 @@ const Contact = () => {
                 </button>
                 
                 {submitSuccess && (
-                  <div className="mt-4 p-3 bg-green-900/30 border border-green-500/30 rounded-md text-green-300 text-center">
+                  <div className="mt-4 p-3 bg-green-900/30 border border-green-500/30 rounded-md text-green-300 text-center animate-fade-in">
                     Message sent successfully! We'll be in touch soon.
+                  </div>
+                )}
+
+                {submitError && (
+                  <div className="mt-4 p-3 bg-red-900/30 border border-red-500/30 rounded-md text-red-300 text-center animate-fade-in">
+                    There was an error sending your message. Please try again.
                   </div>
                 )}
               </form>
