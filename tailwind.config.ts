@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				heading: ['Montserrat', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +66,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for Ernest Lino's site
+				lino: {
+					black: '#111111',
+					'black-light': '#222222',
+					yellow: '#FFD700',
+					'yellow-light': '#FFDF40',
+					'yellow-dark': '#D4AF37',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +97,54 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'pulse-subtle': {
+					'0%, 100%': {
+						transform: 'scale(1)',
+					},
+					'50%': {
+						transform: 'scale(1.05)',
+					},
+				},
+				'slide-in': {
+					'0%': {
+						transform: 'translateX(100%)',
+						opacity: '0'
+					},
+					'100%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					},
+				},
+				'slide-out': {
+					'0%': {
+						transform: 'translateX(0)',
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateX(-100%)',
+						opacity: '0'
+					},
+				},
+				'shimmer': {
+					'100%': {
+						transform: 'translateX(100%)',
+					},
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-subtle': 'pulse-subtle 2s infinite',
+				'slide-in': 'slide-in 0.3s forwards',
+				'slide-out': 'slide-out 0.3s forwards',
+				'shimmer': 'shimmer 1.5s infinite',
+			},
+			backgroundImage: {
+				'glossy-black': 'linear-gradient(to bottom, #222, #111)',
+				'glossy-yellow': 'linear-gradient(to bottom, #FFDF40, #D4AF37)',
+				'glossy-dark': 'linear-gradient(to bottom, #1c1c1c, #0a0a0a)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
